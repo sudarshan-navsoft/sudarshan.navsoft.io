@@ -1,0 +1,29 @@
+<div class="container">
+    <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <div class="col-md-3 mb-2 mb-md-0">
+            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+        </div>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <ng-container *ngFor="let item of menus">
+                <li><a class="nav-link px-2" (click)="goto(item.route)">{{item.name}}</a></li>
+            </ng-container>
+            <!-- <ng-container *ngIf="isLogIn==true"> -->
+                <li *ngFor="let item of menusIn"><a class="nav-link px-2" (click)="goto(item.route)">{{item.name}}</a></li>
+            <!-- </ng-container> -->
+            <!-- <li><a class="nav-link px-2" (click)="goto('home')">Home</a></li>
+            <li><a class="nav-link px-2" (click)="goto('about')">About</a></li> -->
+        </ul>
+
+        <div class="col-md-3 text-end">
+            <button type="button" *ngIf="isLogIn==false" class="btn btn-outline-primary me-2" (click)="gotologin()">Login</button>
+            <button type="button" *ngIf="isLogIn==true" class="btn btn-outline-primary me-2" (click)="logMeOut()">Log Out</button>
+            <button type="button" *ngIf="isLogIn==false" class="btn btn-primary" (click)="opensignup()">Sign-up</button>
+        </div>
+    </header>
+</div>

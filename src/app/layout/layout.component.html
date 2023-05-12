@@ -1,0 +1,15 @@
+<app-header (newItemEvent)="menubar($event)"></app-header>
+<mat-sidenav-container class="example-container bg-body"  autosize>
+  <mat-sidenav #sidenav mode="side">
+    <p><button mat-button (click)="sidenav.close()"><mat-icon>close</mat-icon></button></p>
+    <button routerLink="/about">about</button>
+    <button routerLink="/home">Home</button>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <p><button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button></p>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-footer></app-footer>
