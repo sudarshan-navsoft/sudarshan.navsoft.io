@@ -1,5 +1,12 @@
 <!-- <p>listing works!</p> -->
 <mat-progress-bar *ngIf="isLoaded==true" mode="indeterminate"></mat-progress-bar>
+<div class="container mx-auto my-2 d-flex justify-content-center align-items-baseline">
+<mat-form-field appearance="fill" class="w-50">
+  <mat-label>Search here</mat-label>
+  <input matInput #searchinput>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="applyfilter(searchinput)">Search</button>
+</div>
 <table mat-table [dataSource]="users" class="mat-elevation-z8 w-75 mx-auto my-0">
  <!-- Position Column -->
  <ng-container matColumnDef="id">
@@ -26,8 +33,9 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"  (click)="onRowClicked(row)"></tr>
 
 </table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons  [length]="totalCount"
+[pageSize]="pageSize"></mat-paginator>
 

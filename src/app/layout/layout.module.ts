@@ -8,20 +8,24 @@ import { FooterComponent } from '../common/footer/footer.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NotfoundComponent } from '../pages/notfound/notfound.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NotfoundComponent
   ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
     MatSidenavModule,
     MatIconModule, 
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   exports:[
     LayoutComponent

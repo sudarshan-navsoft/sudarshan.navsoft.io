@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private comn:CommonService) { }
 
   ngOnInit(): void {
+  }
+  openSnack(){
+    this.comn.openSnackbar("Hello Sudarshan",'success')
+  }
+  clicked(){
+    this.comn.openSnackbar("hey bro",'success')
   }
 
 }

@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout.component';
 import { ResolveserviceService } from '../services/resolveservice.service';
 import { LoginGuard } from '../services/authguards/login.guard';
 import { ProtectedlayoutComponent } from '../protectedlayout/protectedlayout.component';
+import { NotfoundComponent } from '../pages/notfound/notfound.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
     component: ProtectedlayoutComponent,
     loadChildren :()=> import('../protectedlayout/protectedlayout.module').then(m=>m.ProtectedlayoutModule),
     canActivate:[LoginGuard]
+  },
+  {
+    path:'**',
+    component: NotfoundComponent
   }
 ];
 

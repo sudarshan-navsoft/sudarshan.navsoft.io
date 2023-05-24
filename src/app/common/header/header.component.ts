@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
     })
   }
   opensignup(){
-    this.dialog.open(SignupComponent)
+    this.dialog.open(SignupComponent,{panelClass:'custom_modal'})
   }
   logMeOut(){
     this._cookie.delete('isLoggedIn');

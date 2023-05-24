@@ -23,7 +23,7 @@ export class GlobalService {
     let headers = new HttpHeaders
     headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers = headers.append('Access-Control-Allow-Origin','*')
-    headers = headers.append( 'Access-Control-Allow-Headers', "Content-Type, Authorization, X-Requested-With,Origin,Accept",)
+    headers = headers.append('Access-Control-Allow-Headers', "Content-Type, Authorization, X-Requested-With,Origin,Accept",)
     headers = headers.append('access-control-allow-methods', "DELETE, POST, GET, OPTIONS",)
     let options = { headers: headers };
     return options;

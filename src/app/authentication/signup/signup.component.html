@@ -1,1 +1,99 @@
-<p>signup works!</p>
+<mat-card>
+    <button (click)="Onnoclick()" mat-button color="primary" class="cls_btn" ><mat-icon >close</mat-icon></button>
+    <mat-card-title>SIGN UP </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="signup" (ngSubmit)="onSubmit()">
+            <div class="example-conatiner">
+                <mat-form-field appearance="fill" class="example-container">
+                    <mat-label>First Name</mat-label>
+                    <input placeholder="Firstname" formControlName="fname" matInput>
+                    <mat-error *ngIf="(formControls['fname'].errors?.['required'])">This field is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="example-conatiner">
+                <mat-form-field appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input placeholder="Lastname" formControlName="lname" matInput>
+                    <mat-error *ngIf="(formControls['lname'].errors?.['required'])">This field is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="example-conatiner">
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input placeholder="Email" formControlName="email" matInput>
+                    <mat-error *ngIf="(formControls['email'].errors?.['required'])">This field is required</mat-error>
+                    <mat-error *ngIf="(formControls['email'].errors?.['email'])">Please enter a valid email</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="example-conatiner">
+            <mat-form-field appearance="fill">
+                <mat-label>Country code</mat-label>
+                <mat-select formControlName="c_code" >
+                    <mat-option value="+91" default>+91</mat-option>
+                    <ng-container *ngFor="let item of CountryCodes">
+                        <mat-option [value]="item.value">{{item.name}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Phone No.</mat-label>
+                <!-- (blur)="formatphone(ph_no.value)" -->
+                <input placeholder="Phone No" formControlName="ph_no" matInput #ph_no customphoneformat >
+                <mat-error *ngIf="(formControls['ph_no'].errors?.['required'])">This field is required</mat-error>
+                <mat-error *ngIf="(formControls['ph_no'].errors?.['minlength'])">Please put atleast 10 numbers</mat-error>
+                <mat-error *ngIf="(formControls['ph_no'].errors?.['maxlength'])">Please dont put more than 14 numbers</mat-error>
+            </mat-form-field>
+            </div>
+            <div class="example-conatiner">
+                <mat-form-field appearance="fill">
+                    <mat-label>Zip </mat-label>
+                    <input placeholder="Zip code" formControlName="zip" matInput>
+                <mat-error *ngIf="(formControls['zip'].errors?.['maxlength'])">Limit is 6</mat-error>
+
+                </mat-form-field>
+            </div>
+            <div class="example-conatiner">
+                <mat-form-field appearance="fill">
+                    <mat-label>State </mat-label>
+                    <input placeholder="State" formControlName="state" matInput>
+                </mat-form-field>
+            </div>
+            <div class="example-conatiner">
+                <mat-form-field appearance="fill">
+                    <mat-label>City </mat-label>
+                    <input placeholder="City" formControlName="city" matInput>
+                </mat-form-field>
+            </div>
+            <div class="example-conatiner">
+                <mat-form-field appearance="fill">
+                    <mat-label>Password </mat-label>
+                    <input type="password" placeholder="password" formControlName="password" matInput autocomplete="off">
+
+                    <mat-error *ngIf="(formControls['password'].errors?.['required'])">This field is required</mat-error>
+                    <mat-error *ngIf="(formControls['password'].errors?.['hasCapitalCase'])">This field must contain at least 1 in Capital Case!</mat-error>
+                    <mat-error *ngIf="(formControls['password'].errors?.['hasSmallCase'])">This field must contain at least 1 in Small Case!</mat-error>
+                    <mat-error *ngIf="(formControls['password'].errors?.['hasSpecialCharacter'])">This field must contain at least 1 in Spacial character Case!</mat-error>
+                    <mat-error *ngIf="(formControls['password'].errors?.['minlength'])">Minimum length should be 8</mat-error>
+                    <mat-error *ngIf="(formControls['password'].errors?.['maxLength'])">Maximum length should be 15</mat-error>
+
+                </mat-form-field>
+            </div>
+            <div class="example-conatiner">
+                <mat-form-field appearance="fill">
+                    <mat-label>Confirm Password </mat-label>
+                    <input type="password" placeholder="password" formControlName="cpassword" matInput>
+                    <mat-error *ngIf="(formControls['cpassword'].errors?.['required'])">This field is required</mat-error>
+                    <mat-error *ngIf="(formControls['cpassword'].errors?.['hasNoPasswordMatch'])">Password and Confirm password should match </mat-error>
+                </mat-form-field>
+                
+                <!-- <mat-error *ngIf="(formControls['ph_no'].errors?.['minlength'])">Please put atleast 10 numbers</mat-error> -->
+
+            </div>
+
+            <mat-card-actions>
+                <button mat-button color="accent" (click)="reset()">Reset</button>
+                <button mat-raised-button color="primary" type="submit">Sign Up Here</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>
