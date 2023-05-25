@@ -49,7 +49,8 @@ import { CustomDirective, customphoneformatDirective } from './services/directiv
     MatSelectModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorInterceptor, multi: true },
+    // { provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
