@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, _MatTableDataSource } from '@angular/material/table';
+import { CommonService } from 'src/app/services/common.service';
 import { GlobalService } from 'src/app/services/global.service';
+import { PubsubService } from 'src/app/services/pubsub.service';
 
 @Component({
   selector: 'app-listing',
@@ -17,19 +19,22 @@ export class ListingComponent implements OnInit ,AfterViewInit{
   totalCount=0
   pageSize=5
 
-  constructor( private _global:GlobalService ) { 
+  constructor( private _global:GlobalService , private pubsub: PubsubService, private Cservice:CommonService) { 
   }
 
   ngOnInit(): void {
     this.isLoaded=true
      this._global.getServiceRequest("https://jsonplaceholder.typicode.com/users").subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.users=res
       this.totalCount=Object.keys(res).length
       this.isLoaded=false
     })
     console.log(this.users)
     this.dataSource
+    this.pubsub.on('sudarshan').subscribe(()=>{
+      this.Cservice.openSnackbar('Observable loaded', 'failure')
+    })
   }
   ngAfterViewInit() {
    

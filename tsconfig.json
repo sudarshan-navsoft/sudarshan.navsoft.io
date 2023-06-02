@@ -8,6 +8,8 @@
     "strict": true,
     "strictNullChecks": false,
     "resolveJsonModule": true,
+    // "ignoreDeprecations": "5.0",
+    "suppressImplicitAnyIndexErrors":true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

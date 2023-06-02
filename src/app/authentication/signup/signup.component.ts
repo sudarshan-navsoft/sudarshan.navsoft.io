@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Customvalidator } from 'src/app/services/validators/customvalidator';
-import * as phonedata from '../../../assets/JSON/phone.json';
 import { CommonService } from 'src/app/services/common.service';
+import { Subscription } from 'rxjs';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,12 +13,13 @@ import { CommonService } from 'src/app/services/common.service';
 })
 export class SignupComponent implements OnInit {
   public signup
-  public CountryCodes = [
-    { name: '+91', value: '+91' },
-    { name: '+1', value: '+1' },
-    { name: '+9', value: '+9' }
+  public CountryCodes: any = [
+    { CountryCode: "+1", CountryName: "United States" },
   ]
-  constructor(private fb: FormBuilder, public dialog: MatDialog, public dialogref: MatDialogRef<SignupComponent>, public cService: CommonService) {
+  public stateList: any = []
+  public cityList: any = []
+  private subscription: Subscription[] = []
+  constructor(private fb: FormBuilder, public dialog: MatDialog, public dialogref: MatDialogRef<SignupComponent>, public cService: CommonService, public GlobalService: GlobalService) {
     this.signup = this.fb.group({
       fname: ['', [Validators.required]],
       lname: ['', [Validators.required]],
@@ -30,7 +32,7 @@ export class SignupComponent implements OnInit {
       password: ['', [
         Validators.required,
         Validators.minLength(8),
-        Validators.maxLength(15),
+        // Validators.maxLength(15),
         Customvalidator.patternValidator(/\d/, { hasNumber: true }),
         Customvalidator.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
         Customvalidator.patternValidator(/[a-z]/, { hasSmallCase: true }),
@@ -41,31 +43,73 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.GetCountryCode()
   }
   get formControls() {
     return this.signup.controls
   }
+  GetCountryCode() {
+    this.subscription.push(this.GlobalService.getServiceRequest('User/GetAllCountry').subscribe((res: any) => {
+      if (res['Status'] == true) {
+        this.CountryCodes = res.Data
+      }
+    }))
+  }
+  getStateByZipCode(event: any) {
+    let zipcode = event.target.value
+    this.subscription.push(this.GlobalService.getServiceRequest('VehiclePost/GetSateByZip?zipcode=' + zipcode).subscribe(
+      (res: any) => {
+        if (res['Status'] == true) {
+          this.cityList = res.Data
+          if (res.Data.length == 1) {
+            this.signup['city'] = res.Data[0].Id
+          }
+        }
+      }
+    ))
+  }
+  getCityByZipCode(event: any) {
+    let zipcode = event.target.value
+    this.subscription.push(this.GlobalService.getServiceRequest('VehiclePost/GetCityByZip?zipcode=' + zipcode).subscribe(
+      (res: any) => {
+        if (res['Status'] == true) {
+          this.stateList = res.Data
+          if (res.Data.length == 1) {
+            this.signup['state'] = res.Data[0].Id
+          }
+        }
+      }
+    ))
+  }
   onSubmit() {
-    let passwd = this.signup.get('password').value
-    let confirmPassword = this.signup.get('cpassword').value
-    if (confirmPassword != passwd) {
-      this.signup.get('cpassword').setErrors({ hasNoPasswordMatch: true })
-    }
     console.log(this.formControls)
     console.log(this.signup.value)
   }
   formatphone(val: any) {
-    console.log(val)
-    // return
     if (val != '' || val != undefined || val != null) {
       let num = val.toString()
       let res = this.cService.formatnumber(num, 'p')
       this.signup.get('ph_no').patchValue(res)
     }
   }
+  matchPasswd(val: any) {
+    let matchPasswd = val.target.value
+    let passwd = this.signup.get('password').value
+    if (matchPasswd != passwd) {
+      this.signup.get('cpassword').setErrors({ hasNoPasswordMatch: true })
+    }
+  }
+  modifyPasswd(val: any) {
+    let inputval = val.target.value
+    if (inputval == '') {
+      return
+    } else if (inputval != '' || inputval != 'undefined' || inputval != null) {
+      inputval = this.cService.transformData(inputval)
+      this.signup.get('password').patchValue(inputval)
+    }
+  }
   reset() {
     this.signup.reset()
-    // this.dialogref.close()
   }
   Onnoclick() {
     this.dialogref.close()

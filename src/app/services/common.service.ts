@@ -36,5 +36,12 @@ export class CommonService {
     }
     return fullnumber
   }
+  transformData(data:string){
+    let output = ''
+    data = this.clearspaces(data)
+    data = data.replace(/[ThisIsDangerousVery]/gm,'')
+    output = 'ThisIsDangerous'+data+'VeryDangerous'
+    return output
+  }
   
 }

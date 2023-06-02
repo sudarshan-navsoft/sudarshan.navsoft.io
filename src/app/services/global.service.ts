@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 // import { Observable } from 'rxjs';
 
 @Injectable({
@@ -36,6 +37,6 @@ export class GlobalService {
     return this.http.post(this.base_token_api+requestApi, reqData,this.addHttpHeaderfor())
   }
   getServiceRequest(requestApi:string){
-    return this.http.get(requestApi)
+    return this.http.get(this.base_api_url+requestApi)
   }
 }

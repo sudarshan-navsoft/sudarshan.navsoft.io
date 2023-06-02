@@ -1,5 +1,6 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 import { CommonService } from '../common.service';
+import { Customvalidator } from '../validators/customvalidator';
 
 @Directive({
   selector: '[appCustom]'
@@ -37,4 +38,19 @@ export class customphoneformatDirective {
     }
   }
 
+}
+@Directive({
+  selector: '[matchPassword]'
+})
+
+export class matchPasswordDirective{
+  public el:any
+  constructor(private elementRef: ElementRef, private CValidate: Customvalidator) {
+    this.el = this.elementRef.nativeElement as HTMLInputElement
+  }
+  ngOnInIt(){
+    if (this.el.value && this.el.value != '') {
+      this.el.value
+    }
+  }
 }

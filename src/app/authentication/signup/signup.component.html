@@ -29,9 +29,9 @@
             <mat-form-field appearance="fill">
                 <mat-label>Country code</mat-label>
                 <mat-select formControlName="c_code" >
-                    <mat-option value="+91" default>+91</mat-option>
+                    <mat-option value="+91" default>India</mat-option>
                     <ng-container *ngFor="let item of CountryCodes">
-                        <mat-option [value]="item.value">{{item.name}}</mat-option>
+                        <mat-option [value]="item.CountryCode">{{item.CountryName}}</mat-option>
                     </ng-container>
                 </mat-select>
             </mat-form-field>
@@ -47,7 +47,7 @@
             <div class="example-conatiner">
                 <mat-form-field appearance="fill">
                     <mat-label>Zip </mat-label>
-                    <input placeholder="Zip code" formControlName="zip" matInput>
+                    <input placeholder="Zip code" formControlName="zip" matInput (blur)="getStateByZipCode($event);getCityByZipCode($event)">
                 <mat-error *ngIf="(formControls['zip'].errors?.['maxlength'])">Limit is 6</mat-error>
 
                 </mat-form-field>
@@ -55,22 +55,27 @@
             <div class="example-conatiner">
                 <mat-form-field appearance="fill">
                     <mat-label>State </mat-label>
-                    <input placeholder="State" formControlName="state" matInput>
+                    <mat-select formControlName="state" [(ngModel)]="signup['state']">
+                        <mat-option *ngFor="let si of stateList" [value]="si.Id">{{si.Text}}</mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div class="example-conatiner">
                 <mat-form-field appearance="fill">
                     <mat-label>City </mat-label>
-                    <input placeholder="City" formControlName="city" matInput>
+                    <mat-select formControlName="city" [(ngModel)]="signup['city']">
+                        <mat-option *ngFor="let si of cityList" [value]="si.Id">{{si.Text}}</mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div class="example-conatiner">
                 <mat-form-field appearance="fill">
                     <mat-label>Password </mat-label>
-                    <input type="password" placeholder="password" formControlName="password" matInput autocomplete="off">
+                    <input type="password" placeholder="password" formControlName="password" matInput autocomplete="off" (blur)="modifyPasswd($event)">
 
                     <mat-error *ngIf="(formControls['password'].errors?.['required'])">This field is required</mat-error>
                     <mat-error *ngIf="(formControls['password'].errors?.['hasCapitalCase'])">This field must contain at least 1 in Capital Case!</mat-error>
+                    <mat-error *ngIf="(formControls['password'].errors?.['hasNumber'])">This field must contain at least 1 in number!</mat-error>
                     <mat-error *ngIf="(formControls['password'].errors?.['hasSmallCase'])">This field must contain at least 1 in Small Case!</mat-error>
                     <mat-error *ngIf="(formControls['password'].errors?.['hasSpecialCharacter'])">This field must contain at least 1 in Spacial character Case!</mat-error>
                     <mat-error *ngIf="(formControls['password'].errors?.['minlength'])">Minimum length should be 8</mat-error>
@@ -81,13 +86,10 @@
             <div class="example-conatiner">
                 <mat-form-field appearance="fill">
                     <mat-label>Confirm Password </mat-label>
-                    <input type="password" placeholder="password" formControlName="cpassword" matInput>
+                    <input type="password" placeholder="Confirm Password" formControlName="cpassword" matInput (blur)="matchPasswd($event)">
                     <mat-error *ngIf="(formControls['cpassword'].errors?.['required'])">This field is required</mat-error>
                     <mat-error *ngIf="(formControls['cpassword'].errors?.['hasNoPasswordMatch'])">Password and Confirm password should match </mat-error>
                 </mat-form-field>
-                
-                <!-- <mat-error *ngIf="(formControls['ph_no'].errors?.['minlength'])">Please put atleast 10 numbers</mat-error> -->
-
             </div>
 
             <mat-card-actions>
