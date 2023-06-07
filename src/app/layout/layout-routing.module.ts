@@ -37,6 +37,16 @@ const routes: Routes = [
     canActivate:[LoginGuard]
   },
   {
+    path:'formexample',
+    component:LayoutComponent,
+    loadChildren:()=> import('../pages/form/form.module').then(m=>m.FormModule)
+  },
+  {
+    path:'test',
+    component:LayoutComponent,
+    loadChildren:()=> import('../pages/test/test.module').then(m=>m.TestModule)
+  },
+  {
     path:'**',
     component: NotfoundComponent
   }

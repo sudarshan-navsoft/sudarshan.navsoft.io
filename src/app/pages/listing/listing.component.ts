@@ -18,13 +18,17 @@ export class ListingComponent implements OnInit ,AfterViewInit{
   @ViewChild(MatPaginator) paginator: MatPaginator |any;
   totalCount=0
   pageSize=5
+  currentPage=0
+  pageEvent:any
+  public start = 0;
+  public end = 0;
 
   constructor( private _global:GlobalService , private pubsub: PubsubService, private Cservice:CommonService) { 
   }
 
   ngOnInit(): void {
     this.isLoaded=true
-     this._global.getServiceRequest("https://jsonplaceholder.typicode.com/users").subscribe(res=>{
+     this._global.getServiceFrom3rdParty("https://jsonplaceholder.typicode.com/users").subscribe(res=>{
       // console.log(res);
       this.users=res
       this.totalCount=Object.keys(res).length
@@ -48,5 +52,16 @@ export class ListingComponent implements OnInit ,AfterViewInit{
   onRowClicked(row:object){
     console.log('row clicked', row);
     
+  }
+  handlePage(e:any){
+    console.log('ev--',e);
+    this.currentPage = e.pageIndex;
+    this.pageSize = e.pageSize;
+    this.iterator();
+  }
+  private iterator() {
+    this.end = (this.currentPage + 1) * this.pageSize;
+    this.start = this.currentPage * this.pageSize;
+    // this.searchConciliation();
   }
 }

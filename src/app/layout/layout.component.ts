@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+// import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-layout',
@@ -14,7 +14,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((e:any)=>{
       if (e instanceof NavigationEnd) {
-        console.log(e);
+        // console.log(e);
         
       }
     })

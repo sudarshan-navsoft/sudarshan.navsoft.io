@@ -39,4 +39,7 @@ export class GlobalService {
   getServiceRequest(requestApi:string){
     return this.http.get(this.base_api_url+requestApi)
   }
+  getServiceFrom3rdParty(requestApi:string){
+    return this.http.get(requestApi)
+  }
 }

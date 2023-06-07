@@ -24,7 +24,8 @@ export class HeaderComponent implements OnInit {
     this.menusIn=[
       {name:'About',route:'/about'},
       {name:'Users',route:'/users'},
-      {name:'Dashboard' , route:'/profile/dashbaord'}
+      {name:'Dashboard' , route:'/profile/dashbaord'},
+      {name:'Formexample',route:'/formexample'},
     ]
    }
 

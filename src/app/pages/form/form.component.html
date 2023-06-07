@@ -1,0 +1,21 @@
+<div class="container">
+    <h2 class="text-center">Add Employees</h2>
+    <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+        <ng-container formArrayName="employees">
+            <ng-container *ngFor="let employe of Employees.controls; let empIndex=index">
+                <div [formGroupName]="empIndex">
+                    <span>{{empIndex+1}}. </span>
+                    <mat-form-field appearance="fill">
+                        <input matInput type="text" formControlName="fname" placeholder="firstname">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <input matInput type="text" formControlName="lname" placeholder="Lastname">
+                    </mat-form-field>
+                    <button mat-button (click)="removeEmp(empIndex)"><mat-icon>delete</mat-icon></button>
+                </div>
+            </ng-container>
+            <button mat-raised-button color="primary" button-color="" (click)="addEmployee()">Add Employees</button>
+        </ng-container>
+        <button mat-raised-button type="submit">Submit</button>
+    </form>
+</div>
