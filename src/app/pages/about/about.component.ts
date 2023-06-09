@@ -25,7 +25,10 @@ export class AboutComponent implements OnInit {
   myfunction(){
     let id = Math.max.apply(Math,this.countries.map((f)=>{return f.id}))
     console.log('id', id);
-    let x = this.countries.map((f)=>{return f.id})
-    console.log('...',x);
+    var res:any=[]
+    let x = this.countries.filter((f)=>{if (f.id == 4) {
+      res.push(f.id)
+    } })
+    console.log('...',x , res);
   }
 }

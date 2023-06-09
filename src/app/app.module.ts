@@ -36,8 +36,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     },
   },
   position:'bottom-right',
-  theme: 'edgeless',
-  type: 'opt-in',
+  theme: 'classic',
+  type: 'info',  
   layout: 'my-custom-layout',
   layouts: {
     'my-custom-layout': '{{messagelink}}{{compliance}}',
