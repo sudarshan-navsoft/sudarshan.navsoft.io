@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { ResolveserviceService } from '../services/resolveservice.service';
 import { LoginGuard } from '../services/authguards/login.guard';
 import { ProtectedlayoutComponent } from '../protectedlayout/protectedlayout.component';
 import { NotfoundComponent } from '../pages/notfound/notfound.component';
+import { AccountResolver } from '../services/resolvers/account.resolver';
 
 const routes: Routes = [
   {
@@ -45,6 +46,12 @@ const routes: Routes = [
     path:'test',
     component:LayoutComponent,
     loadChildren:()=> import('../pages/test/test.module').then(m=>m.TestModule)
+  },
+  {
+    path:'account',
+    component:LayoutComponent,
+    loadChildren:()=> import('../pages/account/account.module').then(m=>m.AccountModule),
+    resolve:{messege: AccountResolver}
   },
   {
     path:'**',

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PubsubService } from 'src/app/services/pubsub.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AboutComponent implements OnInit {
     { id: 4, name: "Brazil" },
     { id: 5, name: "England" }
   ];
-  constructor(private pubsub: PubsubService) { }
+  constructor(private pubsub: PubsubService, private router:Router) { }
 
   ngOnInit(): void {
     this.myfunction()
@@ -24,11 +25,14 @@ export class AboutComponent implements OnInit {
   }
   myfunction(){
     let id = Math.max.apply(Math,this.countries.map((f)=>{return f.id}))
-    console.log('id', id);
+    // console.log('id', id);
     var res:any=[]
     let x = this.countries.filter((f)=>{if (f.id == 4) {
       res.push(f.id)
     } })
-    console.log('...',x , res);
+    // console.log('...',x , res);
+  }
+  goto(){
+    this.router.navigateByUrl('/account')
   }
 }
