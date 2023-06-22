@@ -65,6 +65,9 @@ export class FormComponent implements OnInit {
     let isImage = true;
 
     for (let i = 0; i < files.length; i++) {
+      console.log('files', files[i]);
+      console.log(new Date(files[i].lastModified).getFullYear());
+      console.log('filesize',files[i].size*0.001);
       if (files.item(i).type.match('image.*')) {
         continue;
       } else {
