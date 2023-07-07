@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { CustomDirective, customphoneformatDirective } from './services/directives/custom.directive';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+import { AlertModule } from './common/alert/alert.module';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -82,6 +83,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    AlertModule,
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,

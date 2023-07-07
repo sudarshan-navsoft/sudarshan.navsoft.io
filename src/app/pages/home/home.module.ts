@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { UppercasePipe } from 'src/app/services/pipe/uppercase.pipe';
 import { AppFilterPipe } from 'src/app/services/pipe/app-filter.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormModule } from '../form/form.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
  
 // const MODULES={
 //   MatPaginatorModule,
@@ -25,6 +27,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HomeRoutingModule,
     MatIconModule,
     MatPaginatorModule,
+    FormsModule
   ]
 })
 export class HomeModule { }

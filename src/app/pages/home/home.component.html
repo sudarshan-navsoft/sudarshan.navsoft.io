@@ -1,19 +1,37 @@
 <p>home works!<mat-icon>home</mat-icon></p>
 <div class="container">
-    <h1> Angular </h1>
-    
-    <div class="card">
-      <div class="card-header">
-        Featured by {{display | upperCase}}
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="/about" class="btn btn-primary">Go somewhere</a>
-        <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]">
-</mat-paginator>
-      </div>
+  <h1> Angular </h1>
+
+  <div class="card">
+    <div class="card-header">
+      Featured by {{display | upperCase}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="/about" class="btn btn-primary">Go somewhere</a>
+      <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
     </div>
   </div>
+  <div class="my-4">
+    <button class="btn btn-success m-1" (click)="alertService.success('Success!!', options)">Success</button>
+    <button class="btn btn-danger m-1" (click)="alertService.error('Error :(', options)">Error</button>
+    <button class="btn btn-info m-1" (click)="alertService.info('Some info....', options)">Info</button>
+    <button class="btn btn-warning m-1" (click)="alertService.warn('Warning: ...', options)">Warn</button>
+    <button class="btn btn-outline-dark m-1" (click)="alertService.clear()">Clear</button>
+</div>
+<h5>Alert Options</h5>
+<div class="form-check mb-2">
+    <div class="form-check-inline">
+        <input type="checkbox" name="autoClose" id="autoClose" class="form-check-input" [(ngModel)]="options.autoClose">
+        <label for="autoClose" class="form-check-label">Auto close alert after three seconds</label>
+    </div>
+</div>
+<div class="form-check">
+    <div class="form-check-inline">
+        <input type="checkbox" name="keepAfterRouteChange" id="keepAfterRouteChange" class="form-check-input" [(ngModel)]="options.keepAfterRouteChange">
+        <label for="keepAfterRouteChange">Display alert after one route change</label>
+    </div>
+</div>
+</div>

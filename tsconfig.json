@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     // "ignoreDeprecations": "5.0",
     "suppressImplicitAnyIndexErrors":true,
-    "noImplicitOverride": true,
+    "noImplicitOverride": false,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

@@ -3,6 +3,7 @@ import {GlobalConstantsService} from '../../services/global-constants.service'
 import { Observable } from 'rxjs';
 import { UppercasePipe } from 'src/app/services/pipe/uppercase.pipe';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
+import { AlertService } from 'src/app/common/alert/alert.service';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +13,12 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 })
 export class HomeComponent implements OnInit {
   public display :any = 'sudarshan';
+  options = {
+    autoClose: false,
+    keepAfterRouteChange: false
+};
  
-  constructor(private _global:GlobalConstantsService,  public custompaginator: MatPaginatorIntl) {
+  constructor(private _global:GlobalConstantsService,  public custompaginator: MatPaginatorIntl,public alertService: AlertService) {
     this.custompaginator.itemsPerPageLabel = 'Showing'
     // console.log(_global.testtext);
     let test = new Observable((observer)=>{
