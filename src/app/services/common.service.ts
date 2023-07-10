@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../pages/snackbar/snackbar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,9 @@ export class CommonService {
 
   openSnackbar(messege: string, action: string) {
     this.snackbar.open(messege, action, { duration: 4000 })
+  }
+  OpenSnackbarCom(){
+    this.snackbar.openFromComponent(SnackbarComponent,{duration:3000, horizontalPosition:'center'})
   }
 
   clearspaces(value: string) {

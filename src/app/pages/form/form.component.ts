@@ -2,6 +2,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { CommonService } from 'src/app/services/common.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
@@ -22,10 +23,11 @@ export class FormComponent implements OnInit {
   fileInfos: Observable<any>;
   //
 
-  constructor(private fb: FormBuilder , private uploadService: FileUploadService) {
+  constructor(private fb: FormBuilder , private uploadService: FileUploadService , public CmnService:CommonService) {
     this.empForm = this.fb.group({
       employees: this.fb.array([])
     })
+    
   }
 
   ngOnInit(): void {
@@ -54,6 +56,9 @@ export class FormComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.empForm.value)
+  }
+  OpenSnack(){
+    this.CmnService.OpenSnackbarCom()   
   }
 
   //fileUpload
