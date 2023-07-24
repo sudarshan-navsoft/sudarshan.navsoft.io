@@ -12,8 +12,8 @@ export class CommonService {
   openSnackbar(messege: string, action: string) {
     this.snackbar.open(messege, action, { duration: 4000 })
   }
-  OpenSnackbarCom(){
-    this.snackbar.openFromComponent(SnackbarComponent,{duration:3000, horizontalPosition:'center'})
+  OpenSnackbarCom(data:any){
+    this.snackbar.openFromComponent(SnackbarComponent,{duration:3000, horizontalPosition:'center',data:data})
   }
 
   clearspaces(value: string) {

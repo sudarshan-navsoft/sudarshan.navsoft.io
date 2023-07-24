@@ -58,7 +58,7 @@ export class FormComponent implements OnInit {
     console.log(this.empForm.value)
   }
   OpenSnack(){
-    this.CmnService.OpenSnackbarCom()   
+    this.CmnService.OpenSnackbarCom('yes')   
   }
 
   //fileUpload
