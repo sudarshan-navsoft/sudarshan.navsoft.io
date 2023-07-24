@@ -36,6 +36,9 @@ export class GlobalService {
   postServiceForToken(requestApi: string, reqData:any ){
     return this.http.post(this.base_token_api+requestApi, reqData,this.addHttpHeaderfor())
   }
+  putServiceRequest(requestApi:string,ReqData:any){
+    return this.http.put(this.base_token_api+requestApi,ReqData)
+  }
   getServiceRequest(requestApi:string){
     return this.http.get(this.base_api_url+requestApi)
   }

@@ -9,21 +9,36 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { NotesAddEditComponent } from './notes-add-edit/notes-add-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DeleteComponent } from '../../common/delete/delete.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
-    ListingComponent
+    ListingComponent,
+    NotesAddEditComponent,
+    DeleteComponent
   ],
   imports: [
     CommonModule,
     ListingRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
     MatTableModule,
     MatProgressBarModule,
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatDialogModule
   ]
 })
 export class ListingModule { }
