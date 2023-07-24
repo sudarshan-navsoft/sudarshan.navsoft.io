@@ -8,6 +8,7 @@ import { DeleteComponent } from 'src/app/common/delete/delete.component';
 import { CommonService } from 'src/app/services/common.service';
 import { GlobalService } from 'src/app/services/global.service';
 import { PubsubService } from 'src/app/services/pubsub.service';
+import { NotesdetailsComponent } from './notesdetails/notesdetails.component';
 
 @Component({
   selector: 'app-listing',
@@ -59,8 +60,13 @@ export class ListingComponent implements OnInit, AfterViewInit {
     this.users.filter = filterValue.trim().toLowerCase()
   }
   onRowClicked(row: object) {
-    // console.log('row clicked', row);
+    console.log('row clicked', row);
     this.clickedRow = row
+    let dialogRef = this.dialog.open(NotesdetailsComponent,{
+      panelClass:'notesdetails',
+      width:'400px',
+      data: {data:this.clickedRow}
+    })
   }
   handlePage(e: any) {
     console.log('ev--', e);

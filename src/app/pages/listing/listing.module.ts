@@ -16,13 +16,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DeleteComponent } from '../../common/delete/delete.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NotesdetailsComponent } from './notesdetails/notesdetails.component';
 
 
 @NgModule({
   declarations: [
     ListingComponent,
     NotesAddEditComponent,
-    DeleteComponent
+    DeleteComponent,
+    NotesdetailsComponent
   ],
   imports: [
     CommonModule,
