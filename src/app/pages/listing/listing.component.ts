@@ -62,11 +62,6 @@ export class ListingComponent implements OnInit, AfterViewInit {
   onRowClicked(row: object) {
     console.log('row clicked', row);
     this.clickedRow = row
-    let dialogRef = this.dialog.open(NotesdetailsComponent,{
-      panelClass:'notesdetails',
-      width:'400px',
-      data: {data:this.clickedRow}
-    })
   }
   handlePage(e: any) {
     console.log('ev--', e);
@@ -106,5 +101,12 @@ export class ListingComponent implements OnInit, AfterViewInit {
       }
     })
 
+  }
+  viewDetails(){
+    let dialogRef = this.dialog.open(NotesdetailsComponent,{
+      panelClass:'notesdetails',
+      width:'400px',
+      data: {data:this.clickedRow}
+    })
   }
 }

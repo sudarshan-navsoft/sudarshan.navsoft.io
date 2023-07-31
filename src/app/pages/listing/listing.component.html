@@ -39,6 +39,7 @@
     <td mat-cell *matCellDef="let element"> 
     <button mat-raised-button (click)="editNotes(element.id)" matTooltip="Edit"> <mat-icon>edit</mat-icon></button>
     <button mat-raised-button (click)="deleteNotes(element.id)" matTooltip="Delete" >  <mat-icon>delete</mat-icon></button>
+    <button mat-raised-button (click)="viewDetails()" matTooltip="View details" ><mat-icon>apps</mat-icon></button>
     </td>
   </ng-container>
 
