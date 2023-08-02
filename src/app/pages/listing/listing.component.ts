@@ -9,6 +9,7 @@ import { CommonService } from 'src/app/services/common.service';
 import { GlobalService } from 'src/app/services/global.service';
 import { PubsubService } from 'src/app/services/pubsub.service';
 import { NotesdetailsComponent } from './notesdetails/notesdetails.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listing',
@@ -30,7 +31,7 @@ export class ListingComponent implements OnInit, AfterViewInit {
 
   clickedRow: any
 
-  constructor(private _global: GlobalService, private pubsub: PubsubService, private Cservice: CommonService, public router: Router, public dialog: MatDialog) {
+  constructor(private _global: GlobalService, private pubsub: PubsubService, private Cservice: CommonService, public router: Router, public dialog: MatDialog , private _snackbar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -90,12 +91,14 @@ export class ListingComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((result) => {
       // console.log('dialog closed', result);
       if (result == 'yess') {
+      
         this._global.postServiceRequest('deletenote', id).subscribe({
           next: (res) => {
             this.getNoteList()
           },
           error: (err) => {
             this.getNoteList()
+            this._snackbar.open('notes not deleted','ok',{duration:3000})
           }
         })
       }

@@ -17,6 +17,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { DeleteComponent } from '../../common/delete/delete.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotesdetailsComponent } from './notesdetails/notesdetails.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { NotesdetailsComponent } from './notesdetails/notesdetails.component';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ]
 })
 export class ListingModule { }
