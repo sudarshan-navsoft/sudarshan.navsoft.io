@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {
   NgcCookieConsentService,
-  NgcInitializeEvent,
+  // NgcInitializeEvent,
   NgcNoCookieLawEvent,
   NgcStatusChangeEvent,
 } from 'ngx-cookieconsent';

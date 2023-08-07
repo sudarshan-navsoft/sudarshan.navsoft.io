@@ -8,7 +8,7 @@
     "strict": true,
     "strictNullChecks": false,
     "resolveJsonModule": true,
-    // "ignoreDeprecations": "5.0",
+    "ignoreDeprecations": "5.0",
     "suppressImplicitAnyIndexErrors":true,
     "noImplicitOverride": false,
     "noPropertyAccessFromIndexSignature": true,
@@ -20,11 +20,14 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
-    "module": "es2020",
+    "target": "ES2022",
+    "module": "ES2022",
     "lib": [
-      "es2020",
+      "ES2022",
       "dom"
+    ],
+    "types": [
+      "node"
     ]
   },
   "angularCompilerOptions": {
