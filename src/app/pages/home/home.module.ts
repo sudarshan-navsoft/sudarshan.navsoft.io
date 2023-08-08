@@ -9,6 +9,7 @@ import { AppFilterPipe } from 'src/app/services/pipe/app-filter.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormModule } from '../form/form.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { apphighlightDirective } from 'src/app/services/directives/custom.directive';
  
 // const MODULES={
 //   MatPaginatorModule,
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
 
     UppercasePipe,
-    AppFilterPipe
+    AppFilterPipe,
+    apphighlightDirective
   ],
   imports: [
     CommonModule,

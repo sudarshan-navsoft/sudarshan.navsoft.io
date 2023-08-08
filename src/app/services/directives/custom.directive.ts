@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { CommonService } from '../common.service';
 import { Customvalidator } from '../validators/customvalidator';
 
@@ -52,5 +52,28 @@ export class matchPasswordDirective{
     if (this.el.value && this.el.value != '') {
       this.el.value
     }
+  }
+}
+
+@Directive({
+  selector:'[apphighlight]'
+})
+
+export class apphighlightDirective{
+  @Input() appHighlight: string;
+
+  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  
+  @HostListener('mouseenter') onMouseEnter(){
+    this.highlight(this.appHighlight || 'yellow')
+  }
+  @HostListener('mouseout') onMouseLeave() {
+    this.highlight(null);
+  }
+  
+  private highlight(color:string) {
+    this.renderer.setStyle(this.el.nativeElement, 'background-color', color);
+    // this.renderer.
+    
   }
 }
