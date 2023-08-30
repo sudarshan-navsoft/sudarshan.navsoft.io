@@ -10,6 +10,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormModule } from '../form/form.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { apphighlightDirective } from 'src/app/services/directives/custom.directive';
+import { CarouselModule } from 'ngx-owl-carousel-o';
  
 // const MODULES={
 //   MatPaginatorModule,
@@ -29,7 +30,8 @@ import { apphighlightDirective } from 'src/app/services/directives/custom.direct
     HomeRoutingModule,
     MatIconModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    CarouselModule
   ]
 })
 export class HomeModule { }

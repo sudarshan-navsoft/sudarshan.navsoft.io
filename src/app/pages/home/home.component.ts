@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { UppercasePipe } from 'src/app/services/pipe/uppercase.pipe';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { AlertService } from 'src/app/common/alert/alert.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,34 @@ export class HomeComponent implements OnInit {
   options = {
     autoClose: false,
     keepAfterRouteChange: false
-};
+  };
+  customOptions: OwlOptions = {
+    autoWidth: false,
+    autoplay: true,
+    autoplayTimeout:3000,
+    loop: true,
+    mouseDrag: true,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    navText: ['test', 'glass'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      800: {
+        items: 3
+      },
+      1600: {
+        items: 1
+      },
+      2400: {
+        items: 4
+      }
+    },
+    nav: true
+  }
  
   constructor(private _global:GlobalConstantsService,  public custompaginator: MatPaginatorIntl,public alertService: AlertService) {
     this.custompaginator.itemsPerPageLabel = 'Showing'
