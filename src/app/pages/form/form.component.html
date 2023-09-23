@@ -62,4 +62,6 @@
         </ul>
       </div>
       <button mat-button (click)="OpenSnack()">click</button>
+
+    <app-pagination [currentPage]="currentPage" [limit]="20" [total]="500" (changePage)="changePage($event)"></app-pagination>
 </div>

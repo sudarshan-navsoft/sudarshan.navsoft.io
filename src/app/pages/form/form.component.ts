@@ -23,6 +23,9 @@ export class FormComponent implements OnInit {
   fileInfos: Observable<any>;
   //
 
+  //pagination
+  currentPage:number=1
+
   constructor(private fb: FormBuilder , private uploadService: FileUploadService , public CmnService:CommonService) {
     this.empForm = this.fb.group({
       employees: this.fb.array([])
@@ -115,5 +118,12 @@ export class FormComponent implements OnInit {
         this.progressInfos[idx].percentage = 0;
         this.message = 'Could not upload the file:' + file.name;
       }});
+  }
+
+  changePage(e:any){
+    console.log(e);
+    if (e<=1) {
+      this.currentPage=1
+    }else this.currentPage=e
   }
 }

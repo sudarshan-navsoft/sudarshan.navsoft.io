@@ -1,0 +1,22 @@
+<mat-form-field appearance="outline">
+    <mat-select [(value)]="selectedpage" name="1">
+        <mat-option *ngFor="let item of itemsPerPage" [value]="item"  (click)="changeLimit(item)">{{item}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<ul class="pagination">
+    <li [class.disable]="currentPage===1" (click)="changePageFn(currentPage-1)"><span>
+        <mat-icon >arrow_back_ios</mat-icon>
+    </span></li>
+    <li
+      *ngFor="let page of allpages"
+      [ngClass]="{ 'page-item': true, active: currentPage === page , hide:page>pagesCount }"
+      (click)="changePageFn(page)"
+    >
+      <span class="page-link">{{ page }}</span>
+    </li>
+    <li [class.disable]="currentPage===pagesCount" (click)="changePageFn(currentPage+1)"><span>
+        <mat-icon >arrow_forward_ios</mat-icon>
+    </span></li>
+    <li (click)="changePageFn(pagesCount)"><span>last page</span></li>
+  </ul>
